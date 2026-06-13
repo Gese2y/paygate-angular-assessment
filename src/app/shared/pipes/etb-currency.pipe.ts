@@ -10,7 +10,7 @@ export class EtbCurrencyPipe implements PipeTransform {
 
     if (value === null || value === undefined || isNaN(value)) {
       return 'ETB 0.00';
-    }
+    } 
 
     return `ETB ${Number(value).toLocaleString('en-US', {
       minimumFractionDigits: 2, 
