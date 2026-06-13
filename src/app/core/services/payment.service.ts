@@ -1,19 +1,23 @@
-import { PaymentStatus } from './payment-status';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Transaction } from '../../models/transaction';
 
-export interface Transaction {
-  txRef: string;
-  amount: number;
-  note?: string;
+@Injectable({
+  providedIn: 'root'
+})
+export class PaymentService {
 
-  method: 'mobile' | 'bank';
+  private transactionSubject =
+    new BehaviorSubject<Transaction | null>(null);
 
-  recipient: string;
+  currentTransaction$ =
+    this.transactionSubject.asObservable();
 
-  provider?: string;
-  bankName?: string;
+  get currentTransaction() {
+    return this.transactionSubject.value;
+  }
 
-  status: PaymentStatus;
-
-  createdAt: Date;
-  resolvedAt?: Date;
+  clearTransaction(): void {
+    this.transactionSubject.next(null);
+  }
 }

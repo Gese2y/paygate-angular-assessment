@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [MatCardModule],
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
-login() {
-  localStorage.setItem('token', 'logged-in');
-  this.router.navigate(['/pay']);
-}
+
+  constructor(private router: Router) {}
+
+  login() {
+    localStorage.setItem('token', 'demo');
+    this.router.navigate(['/pay']);
+  }
 }

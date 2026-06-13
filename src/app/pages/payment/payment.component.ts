@@ -1,16 +1,34 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [],
+  imports: [
+  CommonModule,
+  ReactiveFormsModule,
+
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatRadioModule,
+  MatSelectModule
+],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })
 export class PaymentComponent {
 
-
-  form = this.fb.group({
+constructor(private fb: FormBuilder) { }
+  form: FormGroup = this.fb.group({
   amount: [
     '',
     [
@@ -45,26 +63,15 @@ ngOnInit() {
       }
     });
 }
-addMobileControls() {
+removeMobileControls(): void {
+  this.form.removeControl('phoneNumber');
+  this.form.removeControl('provider');
+}
 
-  if (!this.form.contains('phoneNumber')) {
-
-    this.form.addControl(
-      'phoneNumber',
-      this.fb.control('', [
-        Validators.required,
-        Validators.pattern(/^09\d{8}$/)
-      ])
-    );
-  }
-
-  if (!this.form.contains('provider')) {
-
-    this.form.addControl(
-      'provider',
-      this.fb.control('', Validators.required)
-    );
-  }
+removeBankControls(): void {
+  this.form.removeControl('accountNumber');
+  this.form.removeControl('bankName');
+  this.form.removeControl('accountHolderName');
 }
 addMobileControls() {
 
@@ -87,6 +94,27 @@ addMobileControls() {
     );
   }
 }
+// addMobileControls() {
+
+//   if (!this.form.contains('phoneNumber')) {
+
+//     this.form.addControl(
+//       'phoneNumber',
+//       this.fb.control('', [
+//         Validators.required,
+//         Validators.pattern(/^09\d{8}$/)
+//       ])
+//     );
+//   }
+
+//   if (!this.form.contains('provider')) {
+
+//     this.form.addControl(
+//       'provider',
+//       this.fb.control('', Validators.required)
+//     );
+//   }
+// }
 addBankControls() {
 
   this.form.addControl(

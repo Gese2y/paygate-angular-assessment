@@ -4,19 +4,19 @@ import {
   Input,
   Output
 } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
+import { PaymentStatus } from '../../../models/payment-status';
 
 @Component({
   selector: 'app-status-badge',
   standalone: true,
-  imports: [MatChipsModule],
+  imports: [MatChipsModule, CommonModule],
   templateUrl: './status-badge.component.html'
 })
 export class StatusBadgeComponent {
 
-  @Input()
-  status!: 'success' | 'failed' | 'pending';
+  @Input() status!: PaymentStatus;
 
   @Output()
   badgeClicked =
