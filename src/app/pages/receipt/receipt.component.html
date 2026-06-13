@@ -1,0 +1,33 @@
+<mat-card *ngIf="transaction">
+
+  <h2>Receipt</h2>
+
+  <p>
+    Reference:
+    {{ transaction.txRef }}
+  </p>
+
+  <p>
+    Amount:
+    {{ transaction.amount | etbCurrency }}
+  </p>
+
+  <p>
+    Recipient:
+    {{ maskedRecipient }}
+  </p>
+
+  <app-status-badge
+    [status]="transaction.status">
+  </app-status-badge>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="newPayment()">
+
+    Make Another Payment
+
+  </button>
+
+</mat-card>
