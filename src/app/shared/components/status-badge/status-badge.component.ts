@@ -12,7 +12,8 @@ import { PaymentStatus } from '../../../models/payment-status';
   selector: 'app-status-badge',
   standalone: true,
   imports: [MatChipsModule, CommonModule],
-  templateUrl: './status-badge.component.html'
+  templateUrl: './status-badge.component.html',
+  styleUrls: ['./status-badge.component.css']
 })
 export class StatusBadgeComponent {
 

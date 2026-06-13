@@ -1,5 +1,7 @@
 <mat-chip
   (click)="clickBadge()"
+  [ngClass]="status"
+  class="status-chip"
   [highlighted]="true">
 
   {{ status | uppercase }}

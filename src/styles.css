@@ -1,4 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root{
+	--bg-1: #0f172a;
+	--bg-2: #0b1220;
+	--card-bg: #0f172a88;
+	--surface: #0b1220ee;
+	--primary: #5b8def;
+	--accent: #7ee787;
+	--muted: #9aa4b2;
+	--success: #16a34a;
+	--danger: #ef4444;
+	--container-width: 980px;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+	color: #e6eef8;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+.app-main {
+	display: flex;
+	justify-content: center;
+	padding: 32px 16px;
+	min-height: calc(100vh - 64px);
+}
+
+.container {
+	width: 100%;
+	max-width: var(--container-width);
+}
+
+mat-card {
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.04);
+	box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+	border-radius: 12px;
+}
+
+.center-card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 360px;
+}
+
+/* small utility spacing */
+.stack { display:flex; flex-direction:column; gap:16px; }
+.row { display:flex; gap:12px; align-items:center; }
+.spacer { flex: 1 1 auto; }

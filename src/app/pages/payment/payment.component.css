@@ -1,0 +1,41 @@
+mat-card { padding: 20px; }
+
+mat-form-field { width: 100%; }
+
+.form-actions { display:flex; justify-content:flex-end; gap:12px; margin-top:8px; }
+
+.provider-row { display:flex; gap:12px; align-items:center; }
+
+/* Make mat-form-field visually consistent before/after focus */
+/* padding and subtle background so the box doesn't jump on focus */
+.mat-form-field-appearance-outline .mat-form-field-infix {
+	padding: 10px 12px;
+	border-radius: 10px;
+	background: rgba(255,255,255,0.02);
+	transition: box-shadow 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+	border-radius: 10px;
+	border-color: rgba(255,255,255,0.06);
+}
+
+/* Focused state keeps same box geometry but highlights */
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline,
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-infix {
+	border-color: var(--primary);
+	box-shadow: 0 6px 18px rgba(91,141,239,0.12);
+	background: rgba(91,141,239,0.02);
+}
+
+/* Ensure input height/line-height remain consistent */
+.mat-input-element {
+	padding: 0;
+	line-height: 1.5;
+}
+
+/* Textarea similar treatment */
+.mat-form-field-appearance-outline textarea.mat-input-element {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}

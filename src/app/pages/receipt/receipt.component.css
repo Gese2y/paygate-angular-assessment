@@ -1,0 +1,5 @@
+mat-card { padding: 20px; max-width:720px; margin: 28px auto }
+
+h2 { margin-top: 0 }
+
+.receipt-row { display:flex; justify-content:space-between; gap:12px }

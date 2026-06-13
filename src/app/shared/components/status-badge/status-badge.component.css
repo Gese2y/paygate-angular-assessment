@@ -1,0 +1,26 @@
+(/* Status badge styling */)
+.status-chip {
+	font-weight: 600;
+	letter-spacing: 0.6px;
+	color: #051025;
+}
+
+.status-chip.success {
+	background: var(--accent);
+	color: #04210a;
+}
+
+.status-chip.pending {
+	background: linear-gradient(90deg, rgba(255,214,102,0.18), rgba(255,214,102,0.08));
+	color: var(--muted);
+}
+
+.status-chip.failed, .status-chip.expired {
+	background: rgba(239,68,68,0.12);
+	color: var(--danger);
+}
+
+.status-chip.initiated {
+	background: rgba(91,141,239,0.10);
+	color: var(--primary);
+}
