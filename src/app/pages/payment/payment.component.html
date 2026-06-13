@@ -1,69 +1,72 @@
 <mat-card>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="stack">
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="amount" appNumericOnly />
+        <mat-error *ngIf="form.get('amount')?.hasError('required')">Amount is required</mat-error>
+        <mat-error *ngIf="form.get('amount')?.hasError('min')">Minimum is ETB 1</mat-error>
+        <mat-error *ngIf="form.get('amount')?.hasError('max')">Maximum is ETB 50,000</mat-error>
+      </mat-form-field>
 
-  <form [formGroup]="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Note</mat-label>
+        <textarea matInput maxlength="50" formControlName="note"></textarea>
+        <mat-hint align="end">{{ form.get('note')?.value?.length || 0 }}/50</mat-hint>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
+      <mat-radio-group formControlName="method" class="row">
+        <mat-radio-button value="mobile">Mobile Wallet</mat-radio-button>
+        <mat-radio-button value="bank">Bank Transfer</mat-radio-button>
+      </mat-radio-group>
 
-      <mat-label>Amount</mat-label>
+      <ng-container *ngIf="form.contains('phoneNumber')">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phoneNumber" />
+          <mat-error *ngIf="form.get('phoneNumber')?.hasError('required')">Phone number is required</mat-error>
+          <mat-error *ngIf="form.get('phoneNumber')?.hasError('pattern')">Must match 09XXXXXXXX</mat-error>
+        </mat-form-field>
 
-      <input
-        matInput
-        formControlName="amount"
-        appNumericOnly>
+        <mat-form-field appearance="outline">
+          <mat-label>Provider</mat-label>
+          <mat-select formControlName="provider">
+            <mat-option value="Telebirr">Telebirr</mat-option>
+            <mat-option value="M-Birr">M-Birr</mat-option>
+            <mat-option value="HelloCash">HelloCash</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
 
-    </mat-form-field>
+      <ng-container *ngIf="form.contains('accountNumber')">
+        <mat-form-field appearance="outline">
+          <mat-label>Account Number</mat-label>
+          <input matInput formControlName="accountNumber" appNumericOnly />
+          <mat-error *ngIf="form.get('accountNumber')?.hasError('required')">Account number required</mat-error>
+          <mat-error *ngIf="form.get('accountNumber')?.hasError('pattern')">Must be exactly 13 digits</mat-error>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline">
+          <mat-label>Bank Name</mat-label>
+          <mat-select formControlName="bankName">
+            <mat-option value="Bank A">Bank A</mat-option>
+            <mat-option value="Bank B">Bank B</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-label>Note</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-label>Account Holder Name</mat-label>
+          <input matInput formControlName="accountHolderName" />
+          <mat-error *ngIf="form.get('accountHolderName')?.hasError('required')">Required</mat-error>
+          <mat-error *ngIf="form.get('accountHolderName')?.hasError('minlength')">Minimum 3 characters</mat-error>
+        </mat-form-field>
+      </ng-container>
 
-      <textarea
-        matInput
-        maxlength="50"
-        formControlName="note">
-      </textarea>
-
-      <mat-hint align="end">
-        {{ form.get('note')?.value?.length || 0 }}/50
-      </mat-hint>
-
-    </mat-form-field>
-
-    <mat-radio-group formControlName="method">
-
-      <mat-radio-button value="mobile">
-        Mobile Wallet
-      </mat-radio-button>
-
-      <mat-radio-button value="bank">
-        Bank Transfer
-      </mat-radio-button>
-
-    </mat-radio-group>
-
+      <div class="row form-actions">
+        <div class="spacer"></div>
+        <button mat-stroked-button type="button" (click)="form.reset({ method: 'mobile' })">Reset</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Pay {{ form.get('amount')?.value | etbCurrency }}</button>
+      </div>
+    </div>
   </form>
-
 </mat-card>
-@if(form.contains('phoneNumber')) {
-
-<mat-form-field>
-  <input
-    matInput
-    formControlName="phoneNumber">
-</mat-form-field>
-
-<mat-form-field>
-  <mat-select formControlName="provider">
-    <mat-option value="Telebirr">
-      Telebirr
-    </mat-option>
-    <mat-option value="M-Birr">
-      M-Birr
-    </mat-option>
-    <mat-option value="HelloCash">
-      HelloCash
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-}
