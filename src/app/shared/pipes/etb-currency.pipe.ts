@@ -13,7 +13,7 @@ export class EtbCurrencyPipe implements PipeTransform {
     }
 
     return `ETB ${Number(value).toLocaleString('en-US', {
-      minimumFractionDigits: 2,
+      minimumFractionDigits: 2, 
       maximumFractionDigits: 2
     })}`;
   }
