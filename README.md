@@ -1,27 +1,82 @@
-# FintechPaymentApp
+# 💳 Fintech Payment App (Angular + Angular Material)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0.
+A simulated fintech payment application built with Angular.  
+It demonstrates real-world frontend architecture including dynamic reactive forms, RxJS-based async processing, route guards, HTTP interceptors, and reusable UI components.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# 🚀 Features
 
-## Code scaffolding
+- 📱 Mobile Wallet & 🏦 Bank Transfer payment simulation
+- ⚡ Dynamic Reactive Forms (addControl / removeControl)
+- 🧭 Route guards (AuthGuard + CanDeactivate)
+- 💰 ETB currency formatting pipe
+- 🔢 Numeric-only directive for input validation
+- 🏷 Reusable status badge component
+- 🌐 HTTP interceptor (mock API key injection)
+- 🎨 Angular Material UI components
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+# 📦 Tech Stack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular (Standalone Architecture)
+- Angular Material
+- RxJS
+- TypeScript
+- Reactive Forms
+- UUID
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# 📁 Project Structure
 
-## Running end-to-end tests
+```text
+src/app
+│
+├── core
+│   ├── guards
+│   ├── interceptors
+│   └── services
+│
+├── shared
+│   ├── components
+│   ├── directives
+│   └── pipes
+│
+├── pages
+│   ├── login
+│   ├── payment
+│   ├── processing
+│   ├── receipt
+│   └── not-found
+│
+├── models
+├── app.routes.ts
+└── main.ts
+## 🧪 Commands to Run the Project
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 📦 Install dependencies
+npm install
 
-## Further help
+### 🚀 Run development server
+ng serve
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 🌐 Open application
+http://localhost:4200
+
+---
+
+## 🏗 Build for production
+
+ng build
+
+---
+
+## 🧹 Optional: Clean install (if issues happen)
+
+rm -rf node_modules package-lock.json
+npm install
+
+---
+
